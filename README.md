@@ -108,6 +108,32 @@ cargo test reads_live_account_rate_limits -- --ignored
 Left- or right-click the notification-area icon to open its native menu. Choose
 **Refresh** to retrieve current usage or **Quit** to remove the icon and exit.
 
+## Release cycle and versioning
+
+This project follows [Semantic Versioning](https://semver.org/) using
+`MAJOR.MINOR.PATCH` versions and matching Git tags such as `v0.1.0`.
+
+- `PATCH` releases contain backward-compatible fixes and maintenance changes.
+- `MINOR` releases add functionality. Before `1.0.0`, a minor release may also
+  contain a documented breaking change.
+- `MAJOR` releases indicate incompatible changes after the project reaches
+  `1.0.0`.
+
+Releases are made when a meaningful, verified set of changes is ready rather than
+on a fixed schedule. Each release must pass this checklist:
+
+1. Update the version in `Cargo.toml` and refresh `Cargo.lock`.
+2. Run `cargo fmt --all -- --check`.
+3. Run `cargo clippy --all-targets -- -D warnings`.
+4. Run `cargo test` and the authenticated live-provider test when applicable.
+5. Run `cargo check` and `cargo build --release`.
+6. Commit the release, create an annotated `vMAJOR.MINOR.PATCH` tag, and publish a
+   GitHub release.
+7. Attach the `x86_64-pc-windows-msvc` executable and its SHA-256 checksum.
+
+Release artifacts use the name
+`codex-tray-vMAJOR.MINOR.PATCH-x86_64-pc-windows-msvc.exe`.
+
 ## Source layout
 
 - `main.rs` wires the usage provider to the Windows application.
