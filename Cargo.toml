@@ -1,0 +1,23 @@
+[package]
+name = "codex-tray"
+version = "0.1.0"
+edition = "2024"
+description = "A lightweight native Windows tray application for Codex usage"
+license = "MIT"
+
+[target.'cfg(windows)'.dependencies]
+serde_json = "1.0"
+windows = { version = "0.62.2", default-features = false, features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_System_LibraryLoader",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
