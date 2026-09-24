@@ -112,6 +112,9 @@ Left- or right-click the notification-area icon to open its native menu. Choose
 
 This project follows [Semantic Versioning](https://semver.org/) using
 `MAJOR.MINOR.PATCH` versions and matching Git tags such as `v0.1.0`.
+The package version in `Cargo.toml` is the single source of truth; a separate
+`VERSION` file is intentionally not used because it could drift out of sync.
+Release history is maintained in [`CHANGELOG.md`](CHANGELOG.md).
 
 - `PATCH` releases contain backward-compatible fixes and maintenance changes.
 - `MINOR` releases add functionality. Before `1.0.0`, a minor release may also
@@ -122,20 +125,22 @@ This project follows [Semantic Versioning](https://semver.org/) using
 Releases are made when a meaningful, verified set of changes is ready rather than
 on a fixed schedule. Each release must pass this checklist:
 
-1. Update the version in `Cargo.toml` and refresh `Cargo.lock`.
-2. Run `cargo fmt --all -- --check`.
-3. Run `cargo clippy --all-targets -- -D warnings`.
-4. Run `cargo test` and the authenticated live-provider test when applicable.
-5. Run `cargo check` and `cargo build --release`.
-6. Commit the release, create an annotated `vMAJOR.MINOR.PATCH` tag, and publish a
+1. Move the pending entries in `CHANGELOG.md` into a dated version section.
+2. Update the version in `Cargo.toml` and refresh `Cargo.lock`.
+3. Run `cargo fmt --all -- --check`.
+4. Run `cargo clippy --all-targets -- -D warnings`.
+5. Run `cargo test` and the authenticated live-provider test when applicable.
+6. Run `cargo check` and `cargo build --release`.
+7. Commit the release, create an annotated `vMAJOR.MINOR.PATCH` tag, and publish a
    GitHub release.
-7. Attach the `x86_64-pc-windows-msvc` executable and its SHA-256 checksum.
+8. Attach the `x86_64-pc-windows-msvc` executable and its SHA-256 checksum.
 
 Release artifacts use the name
 `codex-tray-vMAJOR.MINOR.PATCH-x86_64-pc-windows-msvc.exe`.
 
 ## Source layout
 
+- `CHANGELOG.md` records user-visible changes for each release.
 - `main.rs` wires the usage provider to the Windows application.
 - `usage.rs` defines the UI-independent usage model.
 - `codex.rs` queries and parses the authenticated Codex app-server protocol.
