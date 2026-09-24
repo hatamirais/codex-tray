@@ -4,6 +4,7 @@
 compile_error!("codex-tray supports Windows only");
 
 mod codex;
+mod icon;
 mod tray;
 mod usage;
 mod win32;

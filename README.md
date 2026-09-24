@@ -105,8 +105,10 @@ To validate the live provider separately from the UI:
 cargo test reads_live_account_rate_limits -- --ignored
 ```
 
-Left- or right-click the notification-area icon to open its native menu. Choose
-**Refresh** to retrieve current usage or **Quit** to remove the icon and exit.
+Hover over or left-click the notification-area icon to open the fixed Codex usage
+card with session and weekly progress, reset countdowns, and threshold colors.
+Right-click the icon to open the native command menu. Choose **Refresh** to retrieve
+current usage or **Quit** to remove the icon and exit.
 
 ## Release cycle and versioning
 

@@ -7,6 +7,14 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Replaced the left-click native popup menu with a fixed, owner-drawn Windows 11
+  usage card showing session and weekly progress and separate reset countdowns.
+- Made the usage card replace the native hover tooltip and dismiss when the pointer
+  leaves the tray icon and card.
+- Kept Refresh and Quit in the tray icon's right-click command menu.
+
 ## [0.1.0] - 2026-09-24
 
 ### Added

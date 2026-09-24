@@ -4,7 +4,8 @@ use std::time::SystemTime;
 pub struct CodexUsage {
     pub session_remaining_percent: Option<f32>,
     pub weekly_remaining_percent: Option<f32>,
-    pub reset_at: Option<SystemTime>,
+    pub session_reset_at: Option<SystemTime>,
+    pub weekly_reset_at: Option<SystemTime>,
 }
 
 impl CodexUsage {
@@ -12,7 +13,8 @@ impl CodexUsage {
         Self {
             session_remaining_percent: None,
             weekly_remaining_percent: None,
-            reset_at: None,
+            session_reset_at: None,
+            weekly_reset_at: None,
         }
     }
 }

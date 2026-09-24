@@ -81,9 +81,8 @@ fn parse_usage(response: &Value) -> Result<CodexUsage, CodexError> {
     Ok(CodexUsage {
         session_remaining_percent: session.map(|window| window.remaining_percent),
         weekly_remaining_percent: weekly.map(|window| window.remaining_percent),
-        reset_at: session
-            .and_then(|window| window.resets_at)
-            .or_else(|| weekly.and_then(|window| window.resets_at)),
+        session_reset_at: session.and_then(|window| window.resets_at),
+        weekly_reset_at: weekly.and_then(|window| window.resets_at),
     })
 }
 
@@ -264,7 +263,8 @@ mod tests {
 
         assert_eq!(usage.session_remaining_percent, Some(82.0));
         assert_eq!(usage.weekly_remaining_percent, Some(19.0));
-        assert!(usage.reset_at.is_some());
+        assert!(usage.session_reset_at.is_some());
+        assert!(usage.weekly_reset_at.is_some());
     }
 
     #[test]
